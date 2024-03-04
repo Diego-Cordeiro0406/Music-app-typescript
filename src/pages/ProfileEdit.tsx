@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+
 function ProfileEdit() {
   return (
-    <section data-testid="page-profile-edit">
-      <h1>ProfileEdit</h1>
-    </section>
+    <>
+      <Header />
+      <section data-testid="page-profile-edit">
+        <h1>ProfileEdit</h1>
+      </section>
+    </>
   )
 }
 

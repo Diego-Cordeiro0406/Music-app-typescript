@@ -1,8 +1,14 @@
+import Header from "../components/Header";
+
 function Search() {
   return (
-    <section data-testid="page-search">
-      <h1>Search</h1>
-    </section>
+    <>
+      <Header />
+      <section data-testid="page-search">
+        <h1>Search</h1>
+      </section>
+    </>
+    
   )
 }
 
