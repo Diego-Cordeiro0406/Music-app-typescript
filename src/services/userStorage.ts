@@ -2,7 +2,7 @@ import { User } from "../types/types";
 
 const USER_KEY = 'user';
 
-const readUser = () => {
+export const readUser = () => {
   const userString = localStorage.getItem(USER_KEY);
   if (userString !== null) {
       return JSON.parse(userString);

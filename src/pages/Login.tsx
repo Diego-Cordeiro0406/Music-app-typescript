@@ -33,6 +33,7 @@ function Login() {
           onChange={ handleInputChange }
         />
         <button
+          type="button"
           data-testid="login-submit-button"
           disabled={ !valName }
           onClick={ handleClick }
