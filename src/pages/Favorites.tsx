@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+
 function Favorites() {
   return (
-    <section data-testid="page-favorites">
-      <h1>Favorites</h1>
-    </section>
+    <>
+      <Header />
+      <section data-testid="page-favorites">
+        <h1>Favorites</h1>
+      </section>
+    </>
   )
 }
 
