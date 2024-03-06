@@ -2,10 +2,11 @@ import { useState } from "react";
 import Header from "../components/Header";
 import searchAlbumsAPI from "../services/searchAlbumFetch";
 import { AlbumData } from "../types/types";
-import { Link } from "react-router-dom";
+import AlbumCard from "../components/AlbumCard";
 
 function Search() {
   const [search, setSearch] = useState<string>('');
+  const [input, setInput] = useState<string>('');
   const [data, setData] = useState<AlbumData[] | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const [initial, setInitial] = useState<boolean>(true);
@@ -13,6 +14,7 @@ function Search() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const novoValor = event.target.value;
     setSearch(novoValor);
+    setInput(novoValor);
   };
 
   const handleClick = async() => {
@@ -52,23 +54,24 @@ function Search() {
           </form>
         <section>
           {
-            !loading ? <div>resultado</div> : (<span>loading...</span>)
+            !loading && !initial && <div>{`Resultado de álbuns de: ${input}`}</div>
           }
           {
-            data && data?.length > 0 && !initial ? (
-              data.map((album) => (
-                <Link
-                  to={`/album/${album.collectionId}`}
-                  data-testid={`link-to-album-${album.collectionId}`}
+            loading && <div data-testid="loading-element">loading...</div>
+          }
+          {
+            data && data.length === 0 && !initial ? <span>Nenhum álbum foi encontrado</span> : (
+              data?.map((album) => (
+                <AlbumCard
                   key={album.collectionId}
-                >
-                  <img src={album.artworkUrl100} alt={album.artistName} />
-                  <h3>{album.collectionName}</h3>
-                  <p>{album.artistName}</p>
-                  <p>{album.primaryGenreName}</p>
-                </Link>
+                  albumId={album.collectionId}
+                  img={album.artworkUrl100}
+                  albumName={album.collectionName}
+                  artistName={album.artistName}
+                  albumGenre={album.primaryGenreName}
+                />         
               ))
-            ) : <span>Nenhum album foi encontrado</span>
+            )
           }
         </section>
       </section>

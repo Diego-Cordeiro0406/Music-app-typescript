@@ -20,7 +20,7 @@ export type AlbumData = {
   artworkUrl100: string;
   collectionPrice: number;
   collectionExplicitness: string;
-  contentAdvisoryRating: string;
+  contentAdvisoryRating?: string;
   trackCount: number;
   copyright: string;
   country: string;
