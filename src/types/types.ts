@@ -63,3 +63,9 @@ export type MusicTrack = {
   trackViewUrl: string;
   wrapperType: string;
 };
+
+export type Music = {
+  musicId: number;
+  musicName: string;
+  previewUrl: string;
+}

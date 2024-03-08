@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import getMusics from "../services/musicsFetch";
 import { AlbumData, MusicTrack } from "../types/types";
+import MusicCard from "../components/MusicCard";
+import { readFavoriteSongs } from "../services/favoritesStorage";
 
 function Album() {
   const { id } = useParams();
@@ -23,6 +25,9 @@ function Album() {
         setLoading(false)
       }
     };
+    if (!readFavoriteSongs()) {
+      localStorage.setItem('favorite_songs', JSON.stringify([]));
+    }
     fetchData();
   }, [id])
   return (
@@ -38,13 +43,12 @@ function Album() {
         {
           loading ? <div data-testid="loading-element">Loading...</div> : (
             musicData?.slice(1).map((music) => (
-            <div key={music.trackId}>
-              <h3>{ music.trackName }</h3>
-              <audio data-testid="audio-component" src={music.previewUrl} controls>
-                <track kind="captions" />
-                O seu navegador não suporta o elemento{" "} <code>audio</code>.
-              </audio>
-            </div>
+            <MusicCard
+              key={ music.trackId }
+              musicId={music.trackId}
+              musicName={music.trackName}
+              previewUrl={music.previewUrl}
+            />
           )))
         }
       </main>
