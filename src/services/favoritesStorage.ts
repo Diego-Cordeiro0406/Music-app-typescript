@@ -10,14 +10,8 @@ export const readFavoriteSongs = () => {
   return null;
 };
 
-// if (!JSON.parse(readFavoriteSongs())) {
-//   localStorage.setItem(FAVORITE_SONGS_KEY, JSON.stringify([]));
-// }
-
-
 export const saveFavoriteSongs = (favoriteSongs: Music[]) => localStorage
   .setItem(FAVORITE_SONGS_KEY, JSON.stringify(favoriteSongs));
-
 
 export const getFavoriteSongs = () => {
   const favoriteSongs = readFavoriteSongs();
@@ -32,6 +26,5 @@ export const addSong = (song: Music) => {
 };
 
 export const removeSong = (songs: Music[], song: Music) =>  {
-  // const favoriteSongs = readFavoriteSongs();
   saveFavoriteSongs(songs.filter((s: Music) => s.musicId !== song.musicId));
 };

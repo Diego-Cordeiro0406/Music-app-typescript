@@ -7,7 +7,7 @@ import * as musicFetch from '../services/musicsFetch';
 import App from '../App';
 import mockedMusics from './mocks/musicApiMock';
 
-describe('7 - Crie a lista de músicas do álbum selecionado', () => {
+describe('Testando a lista de músicas do álbum selecionado', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     localStorage.setItem('user', JSON.stringify({

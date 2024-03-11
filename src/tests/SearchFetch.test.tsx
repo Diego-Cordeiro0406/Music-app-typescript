@@ -8,7 +8,7 @@ import App from '../App';
 import * as AlbumFetch from '../services/searchAlbumFetch';
 import mockedAlbums from './mocks/responseAPIMock';
 
-describe('6 - Faça a requisição para pesquisar artistas', () => {
+describe('Testando a requisição para pesquisar artistas', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     localStorage.setItem('user', JSON.stringify({

@@ -15,19 +15,28 @@ function MusicCard({musicId, musicName, previewUrl}: MusicCardProps) {
 
   const items = getFavoriteSongs();
   useEffect(() => {
+    // Ao montar o componente verifica se a musica já está na lista de favoritas, se sim seta o estado is checked como true.
     if (items) {
       setIsChecked(items.some((item: Music) => item.musicId === musicElement.musicId));
     }
   }, [items, musicElement.musicId]);
 
   const handleCheckbox = () => {
-    setIsChecked(!isChecked);
+    // Obtem a lista atual de músicas favoritas do localStorage
+    const currentFavoriteSongs = getFavoriteSongs();
 
-    if (isChecked) {
-      removeSong(items, musicElement)
+   // Verifica se a música já está na lista de favoritos
+    const isFavorite = currentFavoriteSongs.some((song: Music) => song.musicId === musicElement.musicId);
+
+    if (isFavorite) {
+      // Se a música já está na lista de favoritos, remova-a
+      removeSong(currentFavoriteSongs, musicElement);
     } else {
-      addSong(musicElement)
+      // Se a música não está na lista de favoritos, adicione-a
+      addSong(musicElement);
     }
+    // Atualiza o estado isChecked com base na nova lista de músicas favoritas
+    setIsChecked(!isChecked);
   };
 
   return (
