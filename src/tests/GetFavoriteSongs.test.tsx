@@ -37,6 +37,7 @@ describe('Testando a requisição para recuperar as músicas favoritas ao entrar
         () => expect(screen.queryByTestId('loading-element')).not.toBeInTheDocument(),
       { timeout: 3000 },
       );
+
       expect(spy).toBeCalled();
     });
 

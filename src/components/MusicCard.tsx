@@ -6,9 +6,10 @@ interface MusicCardProps {
   musicId: number
   musicName: string
   previewUrl: string
+  onFavoritesUpdate?: (favorites: Music[]) => void;
 }
 
-function MusicCard({musicId, musicName, previewUrl}: MusicCardProps) {
+function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCardProps) {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const musicElement: Music = { musicId, musicName, previewUrl };
@@ -37,6 +38,9 @@ function MusicCard({musicId, musicName, previewUrl}: MusicCardProps) {
     }
     // Atualiza o estado isChecked com base na nova lista de músicas favoritas
     setIsChecked(!isChecked);
+    if (onFavoritesUpdate) {
+      onFavoritesUpdate(getFavoriteSongs());
+    }
   };
 
   return (
