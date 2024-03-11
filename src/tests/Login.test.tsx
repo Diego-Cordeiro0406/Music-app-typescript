@@ -9,7 +9,7 @@ import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 
 
-describe('1 - Testando Pagina de login', () => {
+describe('Testando Pagina de login', () => {
   it('Testando se o componente Login é renderizado corretamente',
     async () => {
       renderWithRouter(<Login />);

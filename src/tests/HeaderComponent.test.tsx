@@ -5,7 +5,6 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import * as userAPI from '../services/userStorage';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
-// import * as musicsAPI from '../services/musicsAPI';
 
 describe('Testando renderização do componente de cabeçalho', () => {
   beforeEach(() => {
