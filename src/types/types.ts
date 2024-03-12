@@ -1,8 +1,8 @@
 export type User = {
   name: string;
-  email: string | null;
+  email: string;
   image: string;
-  description: string | null;
+  description: string;
 };
 
 export type AlbumData = {
