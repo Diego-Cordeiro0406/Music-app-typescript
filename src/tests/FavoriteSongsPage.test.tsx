@@ -3,10 +3,8 @@ import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import renderWithRouter from './helpers/renderWithRouter';
-// import * as musicFetch from '../services/musicsFetch';
 import * as favoriteSongs from '../services/favoritesStorage'
 import App from '../App';
-// import mockedMusics from './mocks/musicApiMock';
 import favoritesMock from './mocks/favoritesMock';
 import userEvent from '@testing-library/user-event';
 
@@ -54,19 +52,20 @@ describe('Testando a lista de músicas favoritas', () => {
   it('Testando se a lista de músicas favoritas é atualizada ao remover uma música da lista',
     async () => {
       const user = userEvent.setup();
-      renderWithRouter(<App />, {route: '/favorites'});
+      const { debug } = renderWithRouter(<App />, {route: '/favorites'});
 
       await waitFor(
         () => expect(screen.queryByTestId('loading-element')).not.toBeInTheDocument(),
       { timeout: 3000 },
       );
 
-      const checkboxes = await screen.queryAllByRole('checkbox', { checked: true });
+      const checkboxes = screen.queryAllByRole('checkbox', { checked: true });
 
       expect(screen.getByTestId('checkbox-music-1484688057')).toBeInTheDocument();
       expect(screen.getByTestId('checkbox-music-1484688244')).toBeInTheDocument();
       expect(screen.getAllByTestId('audio-component')).toHaveLength(2);
-      expect(checkboxes).toHaveLength(2);
+      console.log(checkboxes.length)
+      waitFor(() => expect(checkboxes).toHaveLength(2));
 
       await user.click(screen.getByTestId('checkbox-music-1484688057'));
 
@@ -75,5 +74,6 @@ describe('Testando a lista de músicas favoritas', () => {
 
       expect(screen.getAllByTestId('audio-component')).toHaveLength(1);
       expect(screen.queryAllByRole('checkbox', { checked: true })).toHaveLength(1);
+      debug();
     });
 });

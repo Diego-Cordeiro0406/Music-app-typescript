@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createUser } from "../services/userStorage";
 import { useNavigate } from "react-router-dom";
 
+import defaultLogo from '../assets/default.png';
+
 function Login() {
   const [name, setName] = useState<string>('')
 
@@ -15,9 +17,9 @@ function Login() {
   const handleClick = () => {
     createUser({
       name,
-      image: '',
-      description: '',
-      email: 'null'
+      image: defaultLogo,
+      description: 'Sem descrição',
+      email: 'E-mail não informado'
     })
     navigate('/search');
   };
