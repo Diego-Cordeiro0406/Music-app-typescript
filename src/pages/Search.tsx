@@ -34,9 +34,9 @@ function Search() {
   const valSearch = search.length > 1;
 
   return (
-    <>
+    <section className="flex laptop:flex-row w-screen h-screen">
       <Header />
-      <section data-testid="page-search">
+      <section className="flex flex-col w-4/5" data-testid="page-search">
         <form>
             <input
               value={ search }
@@ -75,7 +75,7 @@ function Search() {
           }
         </section>
       </section>
-    </>
+    </section>
     
   )
 }

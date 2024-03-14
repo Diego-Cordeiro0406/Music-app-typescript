@@ -1,23 +1,67 @@
 import { readUser } from "../services/userStorage";
 import { Link } from 'react-router-dom'
+import { IoIosSearch, IoMdStarOutline } from "react-icons/io";
+import { TbUserCircle } from "react-icons/tb";
+
+import logo from '../assets/logo.png';
 
 function Header() {
   return (
-    <header data-testid="header-component">
-      <h1>Header</h1>
+    <header className="flex flex-col w-1/5 justify-between items-center" data-testid="header-component">
+      <img className="mt-4 laptop:w-2/4" src={ logo } alt="logo" />
       <div>
-        <Link data-testid="link-to-search" to={"/search"}>
-          <p>Procurar</p>
+        <Link
+          className="
+          flex
+          laptop:w-[7.563rem]
+          justify-between
+          items-center
+          no-underline
+          cursor-pointer
+          text-[#5b6066]
+        "
+          data-testid="link-to-search"
+          to={"/search"}
+        >
+          <IoIosSearch size="2rem" style={ { color: '#5b6066' } } />
+          <p className="flex laptop:w-[4.688rem] font-['Epilogue']">Procurar</p>
         </Link>
-        <Link data-testid="link-to-favorites" to={"/favorites"}>
-          <p>Favoritos</p>
+        <Link
+          className="
+          flex
+          laptop:w-[7.563rem]
+          justify-between
+          items-center
+          no-underline
+          cursor-pointer
+          text-[#5b6066]
+        " 
+          data-testid="link-to-favorites"
+          to={"/favorites"}
+        >
+          <IoMdStarOutline size="2rem" style={ { color: '#5b6066' } } />
+          <p className="flex laptop:w-[4.688rem] font-['Epilogue']">Favoritos</p>
         </Link>
-        <Link data-testid="link-to-profile" to={"/profile"}>
-          <p>Perfil</p>
+        <Link
+          className="
+            flex
+            laptop:w-[7.563rem]
+            justify-between
+            items-center
+            no-underline
+            cursor-pointer
+            text-[#5b6066]
+          " 
+            data-testid="link-to-profile"
+            to={"/profile"}
+          >
+          <TbUserCircle size="2rem" style={ { color: '#5b6066' } } />
+          <p className="flex laptop:w-[4.688rem] font-['Epilogue']">Perfil</p>
         </Link>
       </div>
-      <div>
-        <p data-testid="header-user-name">{readUser().name}</p>
+      <div className="flex justify-between items-center text-[#5b6066]">
+        <img className="laptop:w-10 laptop:h-10 rounded-full mr-4" src={readUser().image} alt="user-image" />
+        <p className="mb-4 font-['Epilogue'] font-normal" data-testid="header-user-name">{readUser().name}</p>
       </div>
     </header>
   )

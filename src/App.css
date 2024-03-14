@@ -9,7 +9,3 @@ button {
   font-weight: 700;
   font-style: normal;
 }
-
-#login-input::placeholder {
-  color: #003be5;
-}

@@ -71,6 +71,7 @@ function Login() {
             text-center
             p-0
             focus:outline-none
+            placeholder:text-[#003be5]
           "
           placeholder="Qual é o seu nome?"
           data-testid="login-name-input"
@@ -79,7 +80,9 @@ function Login() {
           onChange={ handleInputChange }
         />
         <button
-          className={`
+          className="
+            bg-[#003be5]
+            disabled:bg-red-600
             rounded-3xl
             laptop:w-3/5
             tablet:w-3/5
@@ -91,8 +94,8 @@ function Login() {
             mt-2
             text-sm
             epilo
-            ${valName ? 'bg-[#003be5]' : 'bg-red-600'}
-          `}
+          "
+          
           type="button"
           data-testid="login-submit-button"
           disabled={ !valName }
