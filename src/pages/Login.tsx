@@ -3,6 +3,7 @@ import { createUser } from "../services/userStorage";
 import { useNavigate } from "react-router-dom";
 
 import defaultLogo from '../assets/default.png';
+import logo from '../assets/logo.png';
 
 function Login() {
   const [name, setName] = useState<string>('')
@@ -43,22 +44,33 @@ function Login() {
         flex
         flex-col
         desktop:w-2/4
+        desktop:h-3/5
         laptop:w-3/5
-        h-1/2
+        laptop:h-1/2
+        mobile:w-11/12
+        mobile:h-4/6
+        mobile:min-h-[25rem]
         justify-center
         items-center
         bg-white
         rounded-xl
       "
       >
+        <img className="mobile:w-2/4 tablet:w-1/4 desktop:w-1/4 mb-4" src={logo} alt="logo" />
         <input
+          id="login-input"
           className="
             border
             rounded-3xl
             laptop:w-3/5
+            tablet:w-3/5
+            h-[2.5rem]
+            mobile:w-11/12
             border-[#003be5]
-            laptop:h-[2.5rem]
+            text-[#003be5]
             text-center
+            p-0
+            focus:outline-none
           "
           placeholder="Qual é o seu nome?"
           data-testid="login-name-input"
@@ -67,18 +79,20 @@ function Login() {
           onChange={ handleInputChange }
         />
         <button
-          className="
+          className={`
             rounded-3xl
             laptop:w-3/5
-            bg-[#003be5]
+            tablet:w-3/5
+            h-[2.5rem]
+            mobile:w-11/12
             border-none
-            laptop:h-[2.5rem]
             text-white
             uppercase
             mt-2
             text-sm
             epilo
-          "
+            ${valName ? 'bg-[#003be5]' : 'bg-red-600'}
+          `}
           type="button"
           data-testid="login-submit-button"
           disabled={ !valName }
