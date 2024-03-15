@@ -9,9 +9,9 @@ export default {
       backgroundImage: {
         "login-background": "url(src/assets/bg_blue.png), linear-gradient(to right, rgb(1, 75, 228), rgb(2, 182, 227))",
       },
-      // fontFamily: {
-      //   "epilo": "Epilogue, sans-serif",
-      // }
+      boxShadow : {
+        "shadow": "box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
+      }
     },
     screens: {
       'mobile': '360px',
