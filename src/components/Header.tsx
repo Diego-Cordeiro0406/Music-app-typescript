@@ -7,14 +7,29 @@ import logo from '../assets/logo.png';
 
 function Header() {
   return (
-    <header className="flex flex-col w-1/5 justify-between items-center" data-testid="header-component">
-      <img className="mt-4 laptop:w-2/4" src={ logo } alt="logo" />
+    <header
+      className="
+        flex
+        flex-col
+        laptop:w-1/5
+        mobile:w-0
+        justify-between
+        items-center
+        laptop:static
+        mobile:absolute
+        mobile:h-full
+        bg-white
+      "
+      data-testid="header-component"
+    >
+      <img className="mt-4 w-2/4" src={ logo } alt="logo" />
       <div>
         <Link
           className="
           flex
           laptop:w-[7.563rem]
-          justify-between
+          laptop:justify-between
+          mobile:justify-start
           items-center
           no-underline
           cursor-pointer
@@ -46,7 +61,8 @@ function Header() {
           className="
             flex
             laptop:w-[7.563rem]
-            justify-between
+            laptop:justify-between
+            mobile:justify-start
             items-center
             no-underline
             cursor-pointer
@@ -60,7 +76,16 @@ function Header() {
         </Link>
       </div>
       <div className="flex justify-between items-center text-[#5b6066]">
-        <img className="laptop:w-10 laptop:h-10 rounded-full mr-4" src={readUser().image} alt="user-image" />
+        <img
+          className="
+            w-10
+            h-10
+            rounded-full
+            mr-4
+          "
+          src={readUser().image}
+          alt="user-image"
+        />
         <p className="mb-4 font-['Epilogue'] font-normal" data-testid="header-user-name">{readUser().name}</p>
       </div>
     </header>

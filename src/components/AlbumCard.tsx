@@ -15,10 +15,12 @@ function AlbumCard({albumId, img, albumName, artistName, albumGenre}: AlbumCardP
         flex
         flex-col
         laptop:w-52
+        mobile:w-40
         laptop:h-80
-        mb-8
+        laptop:mb-8
+        mobile:mb-4
         justify-between
-        items-center
+        items-start
         no-underline
         text-[#5b6066]
         bg-white
@@ -29,11 +31,10 @@ function AlbumCard({albumId, img, albumName, artistName, albumGenre}: AlbumCardP
       to={`/album/${albumId}`}
       data-testid={`link-to-album-${albumId}`}
     >
-      <img className="w-full rounded-[0.625rem]" src={img} alt={artistName} />
-      {/* <div className="flex justify-center items-center w-full"> */}
-        <h3 className="my-1.5 max-h-6 overflow-hidden">{albumName}</h3>
-      <div className="flex flex-col justify-start items-center w-full">
-        <p className="my-1.5">{artistName}</p>
+      <img className="w-full laptop:h-2/3 mobile:h-1/4 rounded-[0.625rem]" src={img} alt={artistName} />
+      <h3 className="my-1 max-h-6 overflow-hidden">{albumName}</h3>
+      <div className="flex flex-col justify-start items-start w-full">
+        <p className="my-1.5 font-['Epilogue']">{artistName}</p>
         <p className="my-1.5">{albumGenre}</p>
       </div>
       
