@@ -32,10 +32,23 @@ function AlbumCard({albumId, img, albumName, artistName, albumGenre}: AlbumCardP
       data-testid={`link-to-album-${albumId}`}
     >
       <img className="w-full laptop:h-2/3 mobile:h-1/4 rounded-[0.625rem]" src={img} alt={artistName} />
-      <h3 className="my-1 max-h-6 overflow-hidden">{albumName}</h3>
+      <h3
+        className="
+          flex
+          justify-center
+          items-center
+          my-1
+          mobile:h-10
+          max-h-10
+          overflow-hidden
+          mobile:text-sm
+        "
+      >
+        {albumName}
+      </h3>
       <div className="flex flex-col justify-start items-start w-full">
-        <p className="my-1.5 font-['Epilogue']">{artistName}</p>
-        <p className="my-1.5">{albumGenre}</p>
+        <p className="my-1.5 font-['Epilogue'] mobile:text-sm">{artistName}</p>
+        <p className="my-1.5 mobile:text-sm">{albumGenre}</p>
       </div>
       
     </Link>

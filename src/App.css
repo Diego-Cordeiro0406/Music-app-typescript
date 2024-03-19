@@ -13,7 +13,6 @@ button {
 .toggle {
   width: 300px;
   height: 100%;
-  background-color: #333;
   left: -300px;
   position: absolute;
   top: 0;

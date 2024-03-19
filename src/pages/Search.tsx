@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import searchAlbumsAPI from "../services/searchAlbumFetch";
 import { AlbumData } from "../types/types";
 import AlbumCard from "../components/AlbumCard";
+import Context from "../context/Context";
 
 function Search() {
   const [search, setSearch] = useState<string>('');
@@ -13,14 +14,15 @@ function Search() {
   const [data, setData] = useState<AlbumData[] | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const [initial, setInitial] = useState<boolean>(true);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
 
-  const toggleCategories = async () => {
-    console.log('fui chamado');
-    setSidebarOpen(!sidebarOpen);
-  };
+  const context = useContext(Context);
+
+  if (!context) return null;
+  const { toggleCategories } = context;
+
+  
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const novoValor = event.target.value;
@@ -52,6 +54,7 @@ function Search() {
           flex
           flex-col
           laptop:w-4/5
+          desktop:w-5/6
           mobile:w-full
           mobile:h-full
           "
@@ -83,7 +86,7 @@ function Search() {
                   <GiHamburgerMenu
                     onClick={() => toggleCategories() }
                     size={"2rem"}
-                    style={ { color: '#FFFFFF' } }
+                    style={ { color: '#00d5e2' } }
                     className="ml-1"
                   />
               </div>)
@@ -95,7 +98,7 @@ function Search() {
               laptop:w-2/5
               tablet:w-3/5
               h-[2.5rem]
-              mobile:w-11/12
+              mobile:w-3/4
               text-[#003be5]
               text-start
               placeholder:text-white
