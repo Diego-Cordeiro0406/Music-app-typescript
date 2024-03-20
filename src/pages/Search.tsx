@@ -1,12 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { GiHamburgerMenu } from "react-icons/gi";
+import ReactLoading from 'react-loading';
 
 import Header from "../components/Header";
 import searchAlbumsAPI from "../services/searchAlbumFetch";
 import { AlbumData } from "../types/types";
 import AlbumCard from "../components/AlbumCard";
 import Context from "../context/Context";
+import notFoundImg from '../assets/icon _circle.png'
 
 function Search() {
   const [search, setSearch] = useState<string>('');
@@ -16,6 +18,7 @@ function Search() {
   const [initial, setInitial] = useState<boolean>(true);
 
   const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const context = useContext(Context);
 
@@ -27,7 +30,6 @@ function Search() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const novoValor = event.target.value;
     setSearch(novoValor);
-    setInput(novoValor);
   };
 
   const handleClick = async() => {
@@ -35,6 +37,8 @@ function Search() {
       setLoading(true);
       setInitial(false);
       const albuns = await searchAlbumsAPI(search);
+      console.log(albuns)
+      setInput(search);
       setData(albuns);
     } catch (error) {
       console.log(error);
@@ -42,8 +46,16 @@ function Search() {
       setLoading(false);
       setSearch('');
     }
-    
   };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Previne o comportamento padrão do Enter (por exemplo, enviar um formulário)
+      handleClick(); // Aciona a função de envio
+      inputRef.current?.blur();
+    }
+ };
+
   const valSearch = search.length > 1;
 
   return (
@@ -70,6 +82,7 @@ function Search() {
             laptop:justify-center
             items-center
             h-1/4
+            mobile:min-h-[11.875rem]
             bg-cover
             bg-center
             bg-login-background
@@ -105,12 +118,15 @@ function Search() {
               bg-[#80acf1]
               placeholder:uppercase
               pl-4
-              focus:outline-none
+              outline-none
             "
+              type="text"
               placeholder="digite a sua pesquisa"
               value={ search }
               data-testid="search-artist-input"
+              ref={ inputRef }
               onChange={ handleInputChange }
+              onKeyDown={ handleKeyDown }
             />
             <button
               className="
@@ -144,7 +160,7 @@ function Search() {
           "
         >
           {
-            !loading && !initial && <div
+            !loading && !initial && data!.length > 0 && <div
               className="
                 flex
                 justify-center
@@ -162,10 +178,17 @@ function Search() {
             </div>
           }
           {
-            loading && <div data-testid="loading-element">loading...</div>
+            loading && (
+            <section className="flex justify-center items-center w-full h-full">
+              <ReactLoading type="spinningBubbles" color="#00d5e2" data-testid="loading-element" />
+            </section>)
           }
           {
-            data && data.length === 0 && !initial ? <span>Nenhum álbum foi encontrado</span> : (
+            data && data.length === 0 && !initial ? (
+            <div className="flex flex-col justify-center text-[#5b6066] items-center font-['Epilogue']">
+              <img src={notFoundImg} alt="not-found-image" />
+              <h3>Nenhum álbum foi encontrado</h3>
+            </div>) : (
               data?.map((album) => (
                 <AlbumCard
                   key={album.collectionId}

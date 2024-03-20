@@ -10,7 +10,7 @@ import Context from "../context/Context";
 import { useMediaQuery } from "react-responsive";
 
 function Header() {
-  const [colorLink, setColorLink] = useState({
+  const [links, setColorLink] = useState({
     search: false,
     favorite: false,
     profile: false,
@@ -21,15 +21,14 @@ function Header() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/search') {
-      colorLink.search = true
-    } else if(location.pathname === '/favorites') {
-      colorLink.favorite = true
-    } else if (location.pathname === '/profile') {
-      colorLink.profile = true
-    }
-    console.log(location)
-  }, [colorLink, location]);
+      const path = location.pathname;
+      setColorLink(prevState => ({
+        ...prevState,
+        search: path === '/search',
+        favorite: path === '/favorites',
+        profile: path === '/profile',
+      }))
+  }, [location]);
 
   if (!context) return null;
   const { sidebarOpen, toggleCategories } = context;
@@ -83,13 +82,16 @@ function Header() {
           data-testid="link-to-search"
           to={"/search"}
         >
-          <IoIosSearch size="2rem" style={ { color: '#5b6066' } } />
+          <IoIosSearch
+            size="2rem"
+            style={ { color: links.search ? '#000000' : '#5b6066' }}
+          />
           <p
             className={`
               flex
               laptop:w-[4.688rem]
               font-['Epilogue']
-              ${colorLink.search === true ? 'text-black' : ''}
+              ${links.search ? 'text-black' : ''}
             `
             }
           >
@@ -109,13 +111,16 @@ function Header() {
           data-testid="link-to-favorites"
           to={"/favorites"}
         >
-          <IoMdStarOutline size="2rem" style={ { color: '#5b6066' } } />
+          <IoMdStarOutline
+            size="2rem"
+            style={ { color: links.favorite ? '#000000' : '#5b6066' }}
+          />
           <p
             className={`
             flex
             laptop:w-[4.688rem]
             font-['Epilogue']
-            ${colorLink.favorite === true ? 'text-black' : ''}
+            ${links.favorite ? 'text-black' : ''}
           `
           }
         >
@@ -136,13 +141,17 @@ function Header() {
             data-testid="link-to-profile"
             to={"/profile"}
           >
-          <TbUserCircle size="2rem" style={ { color: '#5b6066' } } />
+          <TbUserCircle
+            size="2rem"
+            
+            style={ { color: links.profile ? '#000000' : '#5b6066' }}
+          />
           <p
           className={`
             flex
             laptop:w-[4.688rem]
             font-['Epilogue']
-            ${colorLink.profile === true ? 'text-black' : ''}
+            ${links.profile ? 'text-black' : ''}
           `
           }
         >

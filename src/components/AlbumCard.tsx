@@ -9,46 +9,45 @@ interface AlbumCardProps {
 }
 
 function AlbumCard({albumId, img, albumName, artistName, albumGenre}: AlbumCardProps) {
+  // console.log(img)
   return (
     <Link
       className="
         flex
         flex-col
-        laptop:w-52
-        mobile:w-40
-        laptop:h-80
+        w-[18.75rem]
+        laptop:h-96
         laptop:mb-8
         mobile:mb-4
         justify-between
         items-start
         no-underline
         text-[#5b6066]
-        bg-white
         rounded-[0.625rem]
         cursor-pointer
-        shadow
       "
       to={`/album/${albumId}`}
       data-testid={`link-to-album-${albumId}`}
     >
-      <img className="w-full laptop:h-2/3 mobile:h-1/4 rounded-[0.625rem]" src={img} alt={artistName} />
+      <img className="w-full h-[18.75rem] rounded-[0.625rem]" src={img} alt={artistName} />
       <h3
         className="
           flex
           justify-center
           items-center
-          my-1
+          my-0
           mobile:h-10
           max-h-10
           overflow-hidden
           mobile:text-sm
+          laptop:text-base
         "
       >
         {albumName}
       </h3>
       <div className="flex flex-col justify-start items-start w-full">
-        <p className="my-1.5 font-['Epilogue'] mobile:text-sm">{artistName}</p>
-        <p className="my-1.5 mobile:text-sm">{albumGenre}</p>
+        <p className="my-0 font-['Epilogue'] text-[#878f96] mobile:text-sm">{artistName}</p>
+        {/* <p className="my-1.5 mobile:text-sm">{albumGenre}</p> */}
       </div>
       
     </Link>
