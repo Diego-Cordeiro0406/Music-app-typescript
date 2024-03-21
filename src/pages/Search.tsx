@@ -37,7 +37,6 @@ function Search() {
       setLoading(true);
       setInitial(false);
       const albuns = await searchAlbumsAPI(search);
-      console.log(albuns)
       setInput(search);
       setData(albuns);
     } catch (error) {
