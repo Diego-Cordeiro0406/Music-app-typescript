@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+
 import { Music } from "../types/types";
 import { addSong, getFavoriteSongs, removeSong } from "../services/favoritesStorage";
 
@@ -44,20 +46,44 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
   };
 
   return (
-    <section key={ musicId }>
-      <h3>{ musicName }</h3>
-      <audio data-testid="audio-component" src={ previewUrl } controls>
-        <track kind="captions" />
-        O seu navegador não suporta o elemento{" "} <code>audio</code>.
-      </audio>
-      <label htmlFor={ musicId.toString() }>Favoritar</label>
+    <section className="flex justify-center items-center flex-col my-4 mr-10" key={ musicId }>
+      <div>
+        {/* <div className="flex flex-col"> */}
+        <h3 className="m-0 text-[#001813]">{ musicName }</h3>
+        <audio className="text-white" data-testid="audio-component" src={ previewUrl } controls>
+          <track kind="captions" />
+          O seu navegador não suporta o elemento{" "} <code>audio</code>.
+        </audio>
+      {/* </div> */}
+      <label
+        htmlFor={ musicId.toString() }
+      >
+        {
+          isChecked ? (
+            <IoIosHeart
+              className="ml-2 mb-3"
+              size="2em"
+              style={
+                {
+                  color: '#ec5050'
+                }
+              }
+            />
+          ) : (
+            <IoIosHeartEmpty className="ml-2 mb-3" size="2em" />
+          )
+        }
+      </label>
       <input
+        className="appearance-none"
         data-testid={`checkbox-music-${musicId}`}
         id={ musicId.toString() }
         type="checkbox"
         checked={ isChecked }
         onChange={ handleCheckbox }
       />
+      </div>
+      <div className="mt-2 w-full width" />
     </section>
   );
 }

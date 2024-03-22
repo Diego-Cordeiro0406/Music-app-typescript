@@ -22,3 +22,11 @@ button {
 .toggle.open {
   left: 0;
 }
+
+.width {
+  border-bottom: 1px solid #CCD4E1;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #FFFFFF;
+}
