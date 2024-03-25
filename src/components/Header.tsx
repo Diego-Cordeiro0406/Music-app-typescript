@@ -48,6 +48,7 @@ function Header() {
         mobile:absolute
         mobile:h-full
         bg-white
+        mobile:z-50
       `}
       data-testid="header-component"
     >

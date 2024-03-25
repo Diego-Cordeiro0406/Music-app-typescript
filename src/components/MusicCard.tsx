@@ -46,22 +46,31 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
   };
 
   return (
-    <section className="flex justify-center items-center flex-col my-4 mr-10" key={ musicId }>
-      <div>
-        {/* <div className="flex flex-col"> */}
-        <h3 className="m-0 text-[#001813]">{ musicName }</h3>
+    <section
+      className="
+        flex
+        justify-center
+        items-center
+        flex-col
+        my-4
+        laptop:mr-10
+        
+      "
+      key={ musicId }
+    >
+      <div className="desktop:flex desktop:justify-center desktop:items-center">
+        <h3 className="laptop:m-0 mobile:m-0 desktop:mr-4 text-[#5b6066]">{ musicName }</h3>
         <audio className="text-white" data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento{" "} <code>audio</code>.
         </audio>
-      {/* </div> */}
       <label
         htmlFor={ musicId.toString() }
       >
         {
           isChecked ? (
             <IoIosHeart
-              className="ml-2 mb-3"
+              className="ml-2 mb-3 desktop:mb-0"
               size="2em"
               style={
                 {
@@ -70,7 +79,7 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
               }
             />
           ) : (
-            <IoIosHeartEmpty className="ml-2 mb-3" size="2em" />
+            <IoIosHeartEmpty className="ml-2 mb-3 desktop:mb-0" size="2em" />
           )
         }
       </label>
@@ -83,7 +92,7 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
         onChange={ handleCheckbox }
       />
       </div>
-      <div className="mt-2 w-full width" />
+      <div className="mt-2 mobile:w-11/12 laptop:w-full width" />
     </section>
   );
 }

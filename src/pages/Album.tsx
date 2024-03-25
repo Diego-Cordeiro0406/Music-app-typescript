@@ -1,17 +1,26 @@
 import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import ReactLoading from "react-loading";
+import { useMediaQuery } from "react-responsive";
+
 import Header from "../components/Header";
-import { useEffect, useState } from "react";
 import getMusics from "../services/musicsFetch";
 import { AlbumData, MusicTrack } from "../types/types";
 import MusicCard from "../components/MusicCard";
 import { readFavoriteSongs } from "../services/favoritesStorage";
-import ReactLoading from "react-loading";
+import { GiHamburgerMenu } from "react-icons/gi";
+import Context from "../context/Context";
+
 
 function Album() {
   const { id } = useParams();
   const [musicData, setMusicData] = useState<MusicTrack[]>();
   const [artistData, setArtistData] = useState<AlbumData>();
   const [loading, setLoading] = useState<boolean>(false);
+
+  const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
+
+  const context = useContext(Context);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +41,9 @@ function Album() {
     fetchData();
   }, [id]);
 
+  if (!context) return null;
+  const { toggleCategories } = context;
+
   return (
     <section className="flex laptop:flex-row mobile:flex-col w-screen h-screen">
     <Header />
@@ -43,29 +55,55 @@ function Album() {
       desktop:w-5/6
       mobile:w-full
       mobile:h-full
+      bg-[#eff3f9]
       "
       data-testid="page-album"
     >
       <section
         className="
           flex
-          relative
-          items-end
+          laptop:relative
+          laptop:items-end
+          mobile:items-center
           h-1/4
           bg-cover
           bg-center
           bg-login-background
+          laptop:z-50
+          desktop:z-50
         "
       >
+        {
+          isMobile && (
+            <div
+              className="
+                flex
+                h-full
+                justify-start"
+              >
+                <GiHamburgerMenu
+                  onClick={() => toggleCategories() }
+                  size={"2rem"}
+                  style={ { color: '#00d5e2' } }
+                  className="mx-1 mt-3"
+                />
+            </div>)
+        }
         <div className="flex laptop:justify-end laptop:w-2/5">
           <img
-            className="absolute rounded-xl top-10"
+            className="
+              laptop:absolute
+              rounded-xl
+              laptop:top-10
+              laptop:w-60
+              laptop:h-60
+              mobile:w-40
+              mobile:h-40
+            "
             src={artistData?.artworkUrl100.replace('100x100bb.jpg', '240x240bb.jpg')}
             alt={artistData?.artistName}
           />
         </div>
-        
-        {/* <section className="flex w-full justify-center items-center"> */}
           <div
             className="
               flex
@@ -81,9 +119,19 @@ function Album() {
             <h3 className="m-0" data-testid="album-name">{ artistData?.collectionName }</h3>
             <p className="m-0" data-testid="artist-name">{ artistData?.artistName }</p>
           </div>
-        {/* </section> */}
       </section>
-      <main className="flex flex-col items-end h-3/4 overflow-y-scroll bg-[#eff3f9]">
+      <main
+        className="
+          flex
+          flex-col
+          laptop:items-end
+          h-3/4
+          overflow-y-scroll
+          bg-[#eff3f9]
+          mt-4
+          mobile:z-10
+        "
+      >
         {
           loading ? (
             <section className="flex justify-center items-center w-full h-full">

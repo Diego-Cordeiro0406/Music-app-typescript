@@ -9,7 +9,6 @@ function Provider({ children }: MyProviderProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleCategories = async () => {
-    console.log('fui chamado');
     setSidebarOpen(!sidebarOpen);
   };
 

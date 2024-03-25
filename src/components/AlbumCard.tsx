@@ -8,8 +8,7 @@ interface AlbumCardProps {
   albumGenre: string
 }
 
-function AlbumCard({albumId, img, albumName, artistName, albumGenre}: AlbumCardProps) {
-  // console.log(img)
+function AlbumCard({albumId, img, albumName, artistName }: AlbumCardProps) {
   return (
     <Link
       className="
@@ -47,7 +46,6 @@ function AlbumCard({albumId, img, albumName, artistName, albumGenre}: AlbumCardP
       </h3>
       <div className="flex flex-col justify-start items-start w-full">
         <p className="my-0 font-['Epilogue'] text-[#878f96] mobile:text-sm">{artistName}</p>
-        {/* <p className="my-1.5 mobile:text-sm">{albumGenre}</p> */}
       </div>
       
     </Link>
