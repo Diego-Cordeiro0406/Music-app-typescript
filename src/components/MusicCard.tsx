@@ -50,11 +50,11 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
       className="
         flex
         justify-center
-        items-center
+        items-end
         flex-col
         my-4
         laptop:mr-10
-        
+        desktop:w-[31.25rem]
       "
       key={ musicId }
     >
