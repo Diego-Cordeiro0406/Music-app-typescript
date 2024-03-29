@@ -101,7 +101,7 @@ function ProfileEdit() {
               laptop:absolute
               rounded-full
               laptop:top-16
-              laptop:left-56
+              laptop:left-54
               desktop:left-40
               others:left-80
               laptop:w-60
@@ -121,8 +121,9 @@ function ProfileEdit() {
             laptop:justify-end
             desktop:justify-center
             items-center
-            mobile:mt-6
-            laptop:mt-8
+            mobile:pt-6
+            laptop:pt-8
+            laptop:pr-8
           "
         >
           <section className="flex flex-col items-start justify-end">

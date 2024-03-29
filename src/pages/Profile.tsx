@@ -79,7 +79,8 @@ function Profile() {
               rounded-full
               laptop:top-16
               laptop:left-56
-              desktop:left-80
+              desktop:left-70
+              others:left-80
               laptop:w-60
               laptop:h-60
               mobile:w-40
@@ -97,8 +98,8 @@ function Profile() {
             laptop:justify-end
             desktop:justify-center
             items-start
-            mobile:mt-6
-            laptop:mt-8
+            mobile:pt-6
+            laptop:pt-8
             desktop:ml-20
           "
           >
