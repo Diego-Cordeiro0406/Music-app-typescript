@@ -78,7 +78,7 @@ function Profile() {
               laptop:absolute
               rounded-full
               laptop:top-16
-              laptop:left-60
+              laptop:left-56
               desktop:left-80
               laptop:w-60
               laptop:h-60
@@ -102,28 +102,28 @@ function Profile() {
             desktop:ml-20
           "
           >
-          <section className="laptop:w-[30.625rem] max-w-[30.625rem] desktop:ml-20">
-            <div className="flex flex-col mb-8 mobile:ml-4">
+          <section className="laptop:w-[30.625rem] max-w-[30.625rem] desktop:ml-40">
+            <div className="flex flex-col mb-8 mobile:ml-4 laptop:ml-0">
               <label className="font-['Epilogue'] mb-1" htmlFor="user-name">Nome</label>
               <p className="mt-0 mb-8 text-[#5b6066]" id="user-name">{userData?.name}</p>
               <label className="font-['Epilogue'] mb-1" htmlFor="user-email">E-mail</label>
               <p id="user-email" className="m-0 text-[#5b6066]">{userData?.email}</p>
             </div>
-            <div className="flex flex-col mb-8 mobile:ml-4">
+            <div className="flex flex-col mb-8 mobile:ml-4 laptop:ml-0">
               <label className="font-['Epilogue'] mb-1" htmlFor="user-description">Descrição</label>
               <span className="max-w-[30.625rem] text-[#5b6066]" id="user-description">{userData?.description}</span>
             </div>
             <div className="flex w-full mobile:justify-center laptop:justify-start mobile:items-center">
               <button
-              className="
-                uppercase
-                bg-[#003be5]
-                h-[2.5rem]
-                rounded-3xl
-                border-none
-                text-white
-                w-[9.5rem]
-              "
+                className="
+                  uppercase
+                  bg-[#003be5]
+                  h-[2.5rem]
+                  rounded-3xl
+                  border-none
+                  text-white
+                  w-[9.5rem]
+                "
               onClick={() => navigate('/profile/edit')}
             >
               Editar perfil

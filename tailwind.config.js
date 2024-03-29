@@ -22,6 +22,8 @@ export default {
       // => @media (min-width: 1024px) { ... }
       'desktop': '1280px',
       // => @media (min-width: 1280px) { ... }
+      'others': '1600px'
+      // => @media (min-width: 1600px) { ... }
     },
   },
   plugins: [],
