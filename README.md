@@ -22,7 +22,7 @@ Aplicativo que fornece previews de musicas baseado na api do itunes.
 - React;
 - React-route-dom;
 - Vitest e RTL para a realização dos testes
-- Api consumida para os dados das musicas: [ItunesApi]([https://developer.apple.com/documentation/applemusicapi//](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html#//apple_ref/doc/uid/TP40017632-CH3-SW1));
+- Api consumida para os dados das musicas: [ItunesApi](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html#//apple_ref/doc/uid/TP40017632-CH3-SW1);
 - Figma para o desenvolvimento da interface.
 - react-responsive
 
