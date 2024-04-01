@@ -25,8 +25,6 @@ function Search() {
   if (!context) return null;
   const { toggleCategories } = context;
 
-  
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const novoValor = event.target.value;
     setSearch(novoValor);
@@ -158,6 +156,19 @@ function Search() {
             overflow-y-scroll
           "
         >
+          {
+            initial && (
+              <p
+              className="
+                font-['Epilogue']
+                text-lg max-w-96
+                text-center
+                text-[#5b6066]
+              "
+              >utilize o campo de pesquisa para pesquisar um artista ou banda especifica
+              </p>
+            )
+          }
           {
             !loading && !initial && data!.length > 0 && <div
               className="

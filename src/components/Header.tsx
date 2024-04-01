@@ -1,9 +1,11 @@
-import { readUser } from "../services/userStorage";
 import { Link, useLocation } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
 import { IoIosSearch, IoMdStarOutline } from "react-icons/io";
 import { TbUserCircle } from "react-icons/tb";
 import { MdArrowBack } from "react-icons/md";
 
+import { readUser } from "../services/userStorage";
 import logo from '../assets/logo.png';
 import { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
@@ -19,8 +21,22 @@ function Header() {
 
   const context = useContext(Context);
   const location = useLocation();
+  const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const redirect = () => {
+  //     const read = readUser()
+  //     if (!read) {
+  //       navigate('/')
+  //     }
+  //   }
+  //   setTimeout(redirect, 8000)
+  // }, [navigate])
   useEffect(() => {
+      const read = readUser()
+      if (!read) {
+        navigate('/')
+      }
       const path = location.pathname;
       setColorLink(prevState => ({
         ...prevState,
@@ -28,7 +44,7 @@ function Header() {
         favorite: path === '/favorites',
         profile: path === '/profile',
       }))
-  }, [location]);
+  }, [location, navigate]);
 
   if (!context) return null;
   const { sidebarOpen, toggleCategories } = context;
@@ -168,10 +184,10 @@ function Header() {
             rounded-full
             mr-4
           "
-          src={readUser().image}
+          src={readUser()?.image}
           alt="user-image"
         />
-        <p className="mb-4 font-['Epilogue'] font-normal" data-testid="header-user-name">{readUser().name}</p>
+        <p className="mb-4 font-['Epilogue'] font-normal" data-testid="header-user-name">{readUser()?.name}</p>
       </div>
     </header>
   )

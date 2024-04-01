@@ -95,6 +95,7 @@ function Profile() {
         <main
           className="
             flex
+            mobile:justify-center
             laptop:justify-end
             desktop:justify-center
             items-start

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUser } from "../services/userStorage";
+import { createUser, readUser } from "../services/userStorage";
 import { useNavigate } from "react-router-dom";
 
 import defaultLogo from '../assets/default.png';
@@ -16,12 +16,15 @@ function Login() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    createUser({
-      name,
-      image: defaultLogo,
-      description: 'Sem descrição',
-      email: 'E-mail não informado'
-    })
+    const read = readUser()
+    if (!read) {
+      createUser({
+        name,
+        image: defaultLogo,
+        description: 'Sem descrição',
+        email: 'E-mail não informado'
+      })
+    }
     navigate('/search');
   };
   const valName = name.length > 2;

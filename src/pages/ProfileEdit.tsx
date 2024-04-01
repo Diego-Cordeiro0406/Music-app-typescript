@@ -119,6 +119,7 @@ function ProfileEdit() {
           className="
             flex
             laptop:justify-end
+            mobile:justify-center
             desktop:justify-center
             items-center
             mobile:pt-6
@@ -126,13 +127,21 @@ function ProfileEdit() {
             laptop:pr-8
           "
         >
-          <section className="flex flex-col items-start justify-end">
+          <section
+            className="
+              flex
+              flex-col
+              laptop:items-start
+              mobile:items-center
+              laptop:justify-end
+            "
+            >
             <div
               className="
                 flex
                 flex-col
                 mb-8
-                mobile:ml-4
+                mobile:ml-0
                 desktop:ml-0
               "
               >
@@ -155,7 +164,7 @@ function ProfileEdit() {
                 flex
                 flex-col
                 mb-8
-                mobile:ml-4
+                mobile:ml-0
                 desktop:ml-0"
               >
               <label className="font-['Epilogue']" htmlFor="input-email">E-mail</label>
@@ -177,8 +186,9 @@ function ProfileEdit() {
                 flex
                 flex-col
                 mb-8
-                mobile:ml-4
-                w-[30.625rem]
+                mobile:ml-0
+                mobile:w-72
+                laptop:w-[30.625rem]
                 desktop:ml-0"
               >
               <label className="font-['Epilogue'] mb-4" htmlFor="input-description">Descrição</label>

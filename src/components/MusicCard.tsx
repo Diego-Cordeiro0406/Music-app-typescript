@@ -92,7 +92,7 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
         onChange={ handleCheckbox }
       />
       </div>
-      <div className="mt-2 mobile:w-11/12 laptop:w-full width" />
+      <div className="mt-2 mobile:w-11/12 laptop:w-full width border-[#CCD4E1]" />
     </section>
   );
 }
