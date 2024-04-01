@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+
 import { Music } from "../types/types";
 import { addSong, getFavoriteSongs, removeSong } from "../services/favoritesStorage";
 
@@ -44,20 +46,53 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
   };
 
   return (
-    <section key={ musicId }>
-      <h3>{ musicName }</h3>
-      <audio data-testid="audio-component" src={ previewUrl } controls>
-        <track kind="captions" />
-        O seu navegador não suporta o elemento{" "} <code>audio</code>.
-      </audio>
-      <label htmlFor={ musicId.toString() }>Favoritar</label>
+    <section
+      className="
+        flex
+        justify-center
+        items-end
+        flex-col
+        my-4
+        laptop:mr-10
+        desktop:w-[31.25rem]
+      "
+      key={ musicId }
+    >
+      <div className="desktop:flex desktop:justify-center desktop:items-center">
+        <h3 className="laptop:m-0 mobile:m-0 desktop:mr-4 text-[#5b6066]">{ musicName }</h3>
+        <audio className="text-white" data-testid="audio-component" src={ previewUrl } controls>
+          <track kind="captions" />
+          O seu navegador não suporta o elemento{" "} <code>audio</code>.
+        </audio>
+      <label
+        htmlFor={ musicId.toString() }
+      >
+        {
+          isChecked ? (
+            <IoIosHeart
+              className="ml-2 mb-3 desktop:mb-0"
+              size="2em"
+              style={
+                {
+                  color: '#ec5050'
+                }
+              }
+            />
+          ) : (
+            <IoIosHeartEmpty className="ml-2 mb-3 desktop:mb-0" size="2em" />
+          )
+        }
+      </label>
       <input
+        className="appearance-none"
         data-testid={`checkbox-music-${musicId}`}
         id={ musicId.toString() }
         type="checkbox"
         checked={ isChecked }
         onChange={ handleCheckbox }
       />
+      </div>
+      <div className="mt-2 mobile:w-11/12 laptop:w-full width border-[#CCD4E1]" />
     </section>
   );
 }
