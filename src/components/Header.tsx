@@ -87,6 +87,7 @@ function Header() {
           cursor-pointer
           text-[#5b6066]
         "
+          onClick={() => toggleCategories() }
           data-testid="link-to-search"
           to={"/search"}
         >
@@ -116,6 +117,7 @@ function Header() {
           cursor-pointer
           text-[#5b6066]
         " 
+          onClick={() => toggleCategories() }
           data-testid="link-to-favorites"
           to={"/favorites"}
         >
@@ -146,6 +148,7 @@ function Header() {
             cursor-pointer
             text-[#5b6066]
           " 
+            onClick={() => toggleCategories() }
             data-testid="link-to-profile"
             to={"/profile"}
           >
