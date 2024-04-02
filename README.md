@@ -1,5 +1,5 @@
 
-Deploy:
+Deploy: https://music-app-typescript.vercel.app/
 
 
 # Bem vindo ao Music-app!
