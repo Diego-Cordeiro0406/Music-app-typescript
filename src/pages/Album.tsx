@@ -90,19 +90,25 @@ function Album() {
             </div>)
         }
         <div className="flex laptop:justify-end laptop:w-2/5">
-          <img
+          {
+            loading ? (
+              <ReactLoading type="spinningBubbles" color="#00d5e2" data-testid="loading-element" />
+            ) : (
+              <img
             className="
               laptop:absolute
               rounded-xl
               laptop:top-10
               laptop:w-60
               laptop:h-60
-              mobile:w-40
-              mobile:h-40
+              mobile:w-28
+              mobile:h-28
             "
             src={artistData?.artworkUrl100.replace('100x100bb.jpg', '240x240bb.jpg')}
             alt={artistData?.artistName}
           />
+            )
+          }
         </div>
           <div
             className="
@@ -125,10 +131,11 @@ function Album() {
           flex
           flex-col
           laptop:items-end
+          others:pr-20
           h-3/4
           overflow-y-scroll
           bg-[#eff3f9]
-          mt-4
+          pt-4
           mobile:z-10
         "
       >

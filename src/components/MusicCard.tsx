@@ -59,7 +59,18 @@ function MusicCard({musicId, musicName, previewUrl, onFavoritesUpdate}: MusicCar
       key={ musicId }
     >
       <div className="desktop:flex desktop:justify-center desktop:items-center">
-        <h3 className="laptop:m-0 mobile:m-0 desktop:mr-4 text-[#5b6066]">{ musicName }</h3>
+        <h3
+          className="
+            laptop:m-0
+            mobile:m-0
+            desktop:mr-4
+            text-[#5b6066]
+            laptop:ml-2
+            mobile:ml-2
+          "
+        >
+          { musicName }
+        </h3>
         <audio className="text-white" data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento{" "} <code>audio</code>.
