@@ -23,15 +23,6 @@ function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const redirect = () => {
-  //     const read = readUser()
-  //     if (!read) {
-  //       navigate('/')
-  //     }
-  //   }
-  //   setTimeout(redirect, 8000)
-  // }, [navigate])
   useEffect(() => {
       const read = readUser()
       if (!read) {

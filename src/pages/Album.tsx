@@ -45,7 +45,7 @@ function Album() {
   const { toggleCategories } = context;
 
   return (
-    <section className="flex laptop:flex-row mobile:flex-col w-screen h-screen">
+    <section className="flex laptop:flex-row mobile:flex-col w-dvw h-dvh">
     <Header />
     <section
       className="

@@ -17,8 +17,8 @@ function NotFound() {
         flex
         justify-center
         items-center
-        w-screen
-        h-screen
+        w-dvw
+        h-dvh
         border-none
         bg-cover
         bg-center
