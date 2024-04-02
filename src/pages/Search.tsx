@@ -56,7 +56,7 @@ function Search() {
   const valSearch = search.length > 1;
 
   return (
-    <section className="flex laptop:flex-row mobile:flex-col w-screen h-screen">
+    <section className="flex laptop:flex-row mobile:flex-col w-dvw h-dvh">
       <Header />
       <section
         className="

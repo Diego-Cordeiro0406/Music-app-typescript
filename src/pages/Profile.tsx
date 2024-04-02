@@ -37,8 +37,8 @@ function Profile() {
         flex
         laptop:flex-row
         mobile:flex-col
-        w-screen
-        h-screen
+        w-dvw
+        h-dvh
         bg-[#eff3f9]
       "
     >
